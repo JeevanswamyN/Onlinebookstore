@@ -68,8 +68,8 @@ public class OrderServlet extends HttpServlet {
 				 title=item.getBook_Title();
 				 price=item.getPrice();
 			
-				/*OrderItem oitem=new OrderItem(isbn, title, price);*/
-				/*if(OrderService.orderitems(oitem, key))
+				OrderItem oitem=new OrderItem(isbn, title, price);
+				if(OrderService.orderitems(oitem, key))
 				{
 					System.out.println("cart confirmed");
 					msg=" custer order id is:\n"+key;
@@ -77,7 +77,7 @@ public class OrderServlet extends HttpServlet {
 				else
 				{
 					System.out.println("failure");
-				}*/
+				}
 			}
 			cart.clear();
 			}

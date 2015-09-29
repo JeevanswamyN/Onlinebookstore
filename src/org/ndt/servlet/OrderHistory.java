@@ -44,16 +44,15 @@ public class OrderHistory extends HttpServlet {
 	String username=(String)request.getParameter("hdnusername");
 	
 	List<OrderTable> olist=OrderService.getorderhistory(username);
-	System.out.println(username);
 	String msg=null;
 	PrintWriter out =response.getWriter();
-	if(olist.size()>0)
+	if(olist!=null)
 	{
-		System.out.println("hi table not null");
+		System.out.println("hi username"+username);
 	}
 	else
 	{
-		System.out.println("hi table null");
+		System.out.println("null");
 	}
 	for(OrderTable b:olist)
 	

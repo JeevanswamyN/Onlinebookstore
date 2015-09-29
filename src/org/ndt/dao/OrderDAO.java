@@ -47,7 +47,7 @@ public class OrderDAO {
 		try {
 			PreparedStatement ps = conn.prepareStatement(sql);
 			ps.setInt(1, key);
-			ps.setString(2, item.getBookIsbn());
+			ps.setInt(2, item.getBookIsbn());
 			ps.setString(3, item.getBookTitle());
 			ps.setInt(4, item.getBookprice());
 		
@@ -63,7 +63,7 @@ public class OrderDAO {
 
 	public List<OrderTable> getorderhistory(String username)
 	{
-		String sql="select u.username,b.book_isbn,b.book_title,b.book_price,o.userid from user u,book b,ordertable o,orderitems oa where o.username=u.username and oa.bookisbn=b.book_isbn and o.userid=oa.userid and u.username=?";
+		String sql="select u.username,o.totalamt,b.book_isbn,b.book_title,b.book_price,o.userid from user u,book b,ordertable o,orderitems oa where o.username=u.username and oa.bookisbn=b.book_isbn and o.userid=oa.userid and u.username=?";
 		List<OrderTable> oList=new ArrayList<OrderTable>();
 		Connection conn=DBManager.getConnection();
 		boolean flag=false;
@@ -74,7 +74,7 @@ public class OrderDAO {
 			while(rs.next())
 			{
 				
-				OrderItem orderItem=new OrderItem(rs.getString(3), rs.getString(4),rs.getInt(5));
+				OrderItem orderItem=new OrderItem(rs.getInt(3), rs.getString(4),rs.getInt(5));
 				OrderTable orderTable=new OrderTable(rs.getString(1), rs.getInt(2),orderItem);
 				oList.add(orderTable);
 				flag=true;

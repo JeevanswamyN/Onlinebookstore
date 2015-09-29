@@ -1,14 +1,14 @@
 package org.ndt.entity;
 
 public class OrderItem {
-	private String bookIsbn;
+	private int bookIsbn;
 	private String bookTitle;
 	private int bookprice;
 	private OrderTable orderTable;
-	public String getBookIsbn() {
+	public int getBookIsbn() {
 		return bookIsbn;
 	}
-	public void setBookIsbn(String bookIsbn) {
+	public void setBookIsbn(int bookIsbn) {
 		this.bookIsbn = bookIsbn;
 	}
 	public String getBookTitle() {
@@ -23,13 +23,13 @@ public class OrderItem {
 	public void setBookprice(int bookprice) {
 		this.bookprice = bookprice;
 	}
-	public OrderItem(String string, String bookTitle, int bookprice) {
+	public OrderItem(int bookIsbn, String bookTitle, int bookprice) {
 		super();
-		this.bookIsbn = string;
+		this.bookIsbn = bookIsbn;
 		this.bookTitle = bookTitle;
 		this.bookprice = bookprice;
 	}
-	public OrderItem(String bookIsbn, String bookTitle, int bookprice,
+	public OrderItem(int bookIsbn, String bookTitle, int bookprice,
 			OrderTable orderTable) {
 		super();
 		this.bookIsbn = bookIsbn;
